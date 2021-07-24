@@ -67,9 +67,10 @@ io.on('connection', (socket) => {
 
 
     const Book = require('./conn/book')
+    const book111={};
     const Demo = async () => {
     const {id1} = req.params;
-    var book111;
+    
     try {
         book111 = await Book.findById(id1);
     } catch (e) {
