@@ -64,8 +64,19 @@ io.on('connection', (socket) => {
       socket.emit('message-to-all', msg);
   });
 
+
+
+    const Book = require('./conn/book')
+    const {id} = req.params;
+    let book;
+    try {
+        book = await Book.findById(id);
+    } catch (e) {
+        console.error(e);
+        res.status(404).redirect('/404');
+    }
   // работа с комнатами
-  const {roomName} = socket.handshake.query;
+  const {roomName} = book.title;
   console.log(`Socket roomName: ${roomName}`);
   socket.join(roomName);
   socket.on('message-to-room', (msg) => {
