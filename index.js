@@ -54,46 +54,21 @@ app.use(passport.session())
 //_________________________________________________________________________________________________
 
 io.on('connection', (socket) => {
-  const {id} = socket;
-  console.log(`Socket connected: ${id}`);
-
   // сообщение для всех
   socket.on('message-to-all', (msg) => {
-      msg.type = 'all';
+      msg.type = 'всем';
       socket.broadcast.emit('message-to-all', msg);
       socket.emit('message-to-all', msg);
   });
-
-
-
-  const {roomName} = socket.handshake.query;
-
-    const Book = require('./conn/book')
-    var book111 = '1'
-    const Demo = async () => {
-
-    
-    try {
-        book111 = await Book.findById(roomName);
-    } catch (e) {
-        console.error(e);
-        res.status(404).redirect('/404');
-    }
-  };
-  
   // работа с комнатами
-  //const {roomName} = socket.handshake.query;
-  console.log(`Socket roomName: ${book111}`);
+  const {roomName} = socket.handshake.query;
   socket.join(roomName);
   socket.on('message-to-room', (msg) => {
-      msg.type = `room: ${roomName}`;
+      msg.type = ``;
       socket.to(roomName).emit('message-to-room', msg);
       socket.emit('message-to-room', msg);
   });
-
-  socket.on('disconnect', () => {
-      console.log(`Socket disconnected: ${id}`);
-  });
+  socket.on('disconnect', () => {});
 });
 
 //_________________________________________________________________________________________________
