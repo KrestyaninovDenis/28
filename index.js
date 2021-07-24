@@ -57,12 +57,6 @@ io.on('connection', (socket) => {
   const {id} = socket;
   console.log(`Socket connected: ${id}`);
 
-  // сообщение себе
-  socket.on('message-to-me', (msg) => {
-      msg.type = 'me';
-      socket.emit('message-to-me', msg);
-  });
-
   // сообщение для всех
   socket.on('message-to-all', (msg) => {
       msg.type = 'all';

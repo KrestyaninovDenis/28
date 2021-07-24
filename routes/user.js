@@ -37,13 +37,7 @@ router.post('/create', async (req, res) => {
     });
     try {
         await newUser.save();
-        //res.redirect('/user/login');
-        passport.authenticate('local', {    
-        failureRedirect: '/user/login'})
-        res.render("user/profil", {
-            title: "Вход",
-            user: req.user
-        });
+        res.redirect('/user/login');
     } catch (e) {
         console.error(e);
     }
