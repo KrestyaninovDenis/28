@@ -69,7 +69,7 @@ io.on('connection', (socket) => {
   const {roomName} = socket.handshake.query;
 
     const Book = require('./conn/book')
-    const book111 = '1'
+    var book111 = '1'
     const Demo = async () => {
 
     
