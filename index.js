@@ -67,10 +67,10 @@ io.on('connection', (socket) => {
 
 
     const Book = require('./conn/book')
-    const {id} = req.params;
+    const {id1} = req.params;
     let book;
     try {
-        book = await Book.findById(id);
+        book = await Book.findById(id1);
     } catch (e) {
         console.error(e);
         res.status(404).redirect('/404');
