@@ -69,7 +69,7 @@ io.on('connection', (socket) => {
     const Book = require('./conn/book')
     const Demo = async () => {
     const {id1} = req.params;
-    let book;
+    var book111;
     try {
         book = await Book.findById(id1);
     } catch (e) {
@@ -78,7 +78,7 @@ io.on('connection', (socket) => {
     }
   };
   // работа с комнатами
-  const {roomName} = book.title;
+  const {roomName} = book111.title;
   console.log(`Socket roomName: ${roomName}`);
   socket.join(roomName);
   socket.on('message-to-room', (msg) => {
