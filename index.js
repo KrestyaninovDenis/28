@@ -71,7 +71,7 @@ io.on('connection', (socket) => {
     const {id1} = req.params;
     var book111;
     try {
-        book = await Book.findById(id1);
+        book111 = await Book.findById(id1);
     } catch (e) {
         console.error(e);
         res.status(404).redirect('/404');
