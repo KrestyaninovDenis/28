@@ -67,7 +67,7 @@ io.on('connection', (socket) => {
 
 
     const Book = require('./conn/book')
-    const book111={};
+    var book111={};
     const Demo = async () => {
     const {id1} = req.params;
     
@@ -79,11 +79,12 @@ io.on('connection', (socket) => {
     }
   };
   // работа с комнатами
-  const {roomName} = book111.title;
-  console.log(`Socket roomName: ${roomName}`);
+  const roomName1 = book111.title;
+  const {roomName} = socket.handshake.query;
+  console.log(`Socket roomName: ${roomName1}`);
   socket.join(roomName);
   socket.on('message-to-room', (msg) => {
-      msg.type = `room: ${roomName}`;
+      msg.type = `room: ${roomName1}`;
       socket.to(roomName).emit('message-to-room', msg);
       socket.emit('message-to-room', msg);
   });
