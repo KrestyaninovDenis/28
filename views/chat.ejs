@@ -2,14 +2,6 @@
 
     <div class="row">
         <div class="col-4">
-            <div id="list" class="list-group">
-
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-4">
             <div class="form-group">
                 <label for="username">username</label>
                 <input placeholder="username" type="text" id="username" class="form-control">
@@ -21,6 +13,10 @@
             <button type="submit" id="send-all" class="btn btn-primary">all</button>
             <button type="submit" id="send-me" class="btn btn-primary">me</button>
             <button type="submit" id="send-room" class="btn btn-primary">room</button>
+        </div>
+        <div class="col-4">
+            <div id="list" class="list-group" style="height:300px; overflow-y:auto;">
+            </div>     
         </div>
     </div>
 
@@ -37,13 +33,13 @@ const sendMe = document.querySelector('#send-me');
 const sendRoom = document.querySelector('#send-room');
 const getTmp = (msg) => {
     return `
-            <div class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <small>${msg.username}</small>
-                    <small class="text-muted">${msg.type}</small>
-                </div>
-                <p class="mb-1">${msg.text}</p>
+    <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <small>${msg.username}</small>
+                <small class="text-muted">${msg.type}</small>
             </div>
+            <p class="mb-1">${msg.text}</p>
+        </div>
     `;
 };
 
