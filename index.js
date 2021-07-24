@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
   });
 
 
-
+/*
     const Book = require('./conn/book')
     var book111={};
     const Demo = async () => {
@@ -78,13 +78,13 @@ io.on('connection', (socket) => {
         res.status(404).redirect('/404');
     }
   };
+  */
   // работа с комнатами
-  const roomName1 = book111.title;
-  const {roomName} = socket.handshake.query;
-  console.log(`Socket roomName: ${roomName1}`);
+  const {roomName} = req.params;//socket.handshake.query;
+  console.log(`Socket roomName: ${roomName}`);
   socket.join(roomName);
   socket.on('message-to-room', (msg) => {
-      msg.type = `room: ${roomName1}`;
+      msg.type = `room: ${roomName}`;
       socket.to(roomName).emit('message-to-room', msg);
       socket.emit('message-to-room', msg);
   });
