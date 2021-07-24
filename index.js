@@ -67,6 +67,7 @@ io.on('connection', (socket) => {
 
 
     const Book = require('./conn/book')
+    const Demo = async () => {
     const {id1} = req.params;
     let book;
     try {
@@ -75,6 +76,7 @@ io.on('connection', (socket) => {
         console.error(e);
         res.status(404).redirect('/404');
     }
+  };
   // работа с комнатами
   const {roomName} = book.title;
   console.log(`Socket roomName: ${roomName}`);
